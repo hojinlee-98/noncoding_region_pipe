@@ -167,19 +167,19 @@ Batch script generated. To submit your jobs, run:
 
 
 ## enhancer_promoter_burden_preprocess.splitlcr.dom.Nov212022_hj.py
-domiant 
+###domiant 
 ```shell
 python enhancer_promoter_burden_preprocess.splitlcr.dom.Nov212022_hj.py [input_file] [lcr_bed] [MAF]
 ```
-input_file : vcf file split by chromosome
-lcr_ved : low complexity region file split by chromosome (*.bed)
-MAF : minor allele frequency, this parameter is used to filter rare variants using diverse frequency. 
+input_file : vcf file split by chromosome  
+lcr_ved : low complexity region file split by chromosome (*.bed)  
+MAF : minor allele frequency, this parameter is used to filter rare variants using diverse frequency.  
 
 ## enhancer_promoter_burden_preprocess.splitlcr.rec.Nov212022_hj.py
-recessive
+###recessive
 ```shell
 python enhancer_promoter_burden_preprocess.splitlcr.rec.Nov212022_hj.py [input_file] [lcr_bed] [MAF]
 ```
-input_file : vcf file split by chromosome
-lcr_ved : low complexity region file split by chromosome (*.bed)
-MAF : minor allele frequency, this parameter is used to filter rare variants using diverse frequency. 
+input_file : vcf file split by chromosome  
+lcr_ved : low complexity region file split by chromosome (*.bed)  
+MAF : minor allele frequency, this parameter is used to filter rare variants using diverse frequency.  
