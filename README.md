@@ -20,7 +20,8 @@ but there is a trivial thing we need to deal with, that is they do not give name
 ## lcr file preprocess
 download the following LCR-hs37d5.bed.gz file including low complexicity regions.
 https://github.com/lh3/varcmp/blob/master/scripts/LCR-hs37d5.bed.gz
-#### LCR bed file preprocess
+
+### [1] LCR bed file preprocess
 ```shell
 # 파일의 끝 부분을 확인하였더니, 기본적인 chromosome 외에 다른 것들이 존재하였다.
 # 따라서 col1에 대하여 어떤 것들이 있는지 먼저 확인해 준다. 
@@ -127,7 +128,7 @@ hs37d5
 (base) hojin@vpn1722513983 test_hail3 % cat LCR-hs37d5.bed | grep -v '^GL\|^NC\|^hs' | sort -V -k1,1 -k2,2 > LCR_GRCh37_Nov182022_hj.bed
 ```
 
-### split lcr bed by chrom 
+### [2] split lcr bed by chrom 
 ```shell
 [jc2545@ruddle2 v8]$ seq 1 22 > chrom.txt ; echo -e 'X\nY' >> chrom.txt
 [jc2545@c14n07 v8]$ while read line; do cat LCR_GRCh37_Nov182022_hj.bed | awk -F '\t' '{if ($1 == "'${line}'") print $0}' > ./split_bed/LCR_GRCh37_chr${line}_Nov182022_hj.bed; done < chrom.txt
@@ -140,7 +141,7 @@ LCR_GRCh37_chr14_Nov182022_hj.bed  LCR_GRCh37_chr19_Nov182022_hj.bed  LCR_GRCh37
 [jc2545@c13n07 split_test]$ mv *.bed ./split_bed/.
 ```
 
-### split vcf file by chrom
+### [3] split vcf file by chrom
 ```shell
 # indexing
 [jc2545@c13n10 v7]$ cat indexing.sh 
