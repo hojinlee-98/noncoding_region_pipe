@@ -10,6 +10,42 @@ split multi-allelic variants to biallelic variants.
 left-norm expresses variants concisely.
 ![image](https://user-images.githubusercontent.com/121307215/209567058-0ccba6d7-ca1f-4fd9-a655-13dfe58d6e45.png)
 
+## Quality Control
+
+### KING and plink for kinship
+```shell
+vcftools --gzvcf [path]/*.vcf.gz --plink-tped --out [path2]/out
+
+plink --tfile [path2]/out --make-bed --out [path2]/ex
+# use king for kinship
+king -b [path2]/ex.bed --kinship --ibs
+plink --bfile [path2]/ex --recode tab --out [path2]/ex
+```
+
+### plink for gender check
+```shell
+plink --bfile [path2]/ex --check-sex
+```
+
+### somalier for relatedness
+```shell
+bgzip -c [*.vcf] [*.vcf.gz]
+tabix -p vcf [*.vcf.gz]
+
+somalier extract -d extracted/ --sites sites.GRCh37.vcf.gz -f [reference.fasta] [*.vcf.gz]
+somalier relate extracted/*.somalier
+```
+
+### somalier for PCA
+```shell
+somalier ancestry --labels ancestry-labels-1kg.tsv 1kg-somalier/*.somalier ++ extracted/*.somalier
+
+# plotting PCA results
+# check pdf file name in the script.
+Rscript somalier_ancestry_plotpca_Dec122022_hj.R
+```
+
+
 ## annovar_annotation_Nov292022_hj.sh
 annotate vcf file with ANNOVAR that uses diverse databases indexed with Perl script.(the script is gaved in ANNOVAR github)
 
