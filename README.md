@@ -36,10 +36,13 @@ somalier extract -d extracted/ --sites sites.GRCh37.vcf.gz -f [reference.fasta] 
 somalier relate extracted/*.somalier
 ```
 
-### somalier for PCA
+### somalier for population stratification using PCA
+#### somalier
+https://github.com/brentp/somalier  
+#### population stratification
+https://bmcgenomdata.biomedcentral.com/articles/10.1186/s12863-020-0833-x
+
 as population stratification is a well-known confounder of genome-wide studies and it leads to getting false positives, leaving only one of them is an essential step. this thing is also important to analyze for snp though, but, in analysis using rare variants, this confounder could more affect it than the analysis using SNPs. 
-#### refer to the following paper
-(https://bmcgenomdata.biomedcentral.com/articles/10.1186/s12863-020-0833-x)
 
 ```shell
 somalier ancestry --labels ancestry-labels-1kg.tsv 1kg-somalier/*.somalier ++ extracted/*.somalier
