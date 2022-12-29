@@ -211,7 +211,7 @@ Batch script generated. To submit your jobs, run:
 
 
 ## enhancer_promoter_burden_preprocess.splitlcr.dom.Nov212022_hj.py
-### domiant 
+### dominant 
 ```shell
 python enhancer_promoter_burden_preprocess.splitlcr.dom.Nov212022_hj.py [input_file] [lcr_bed] [MAF]
 ```
