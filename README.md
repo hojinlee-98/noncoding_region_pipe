@@ -187,13 +187,6 @@ LCR_GRCh37_chr14_Nov182022_hj.bed  LCR_GRCh37_chr19_Nov182022_hj.bed  LCR_GRCh37
 
 ### [3] split vcf file by chrom
 ```shell
-# indexing
-[jc2545@c13n10 v7]$ cat indexing.sh 
-#! /bin/bash
-#SBATCH -J hj_indexing
-#SBATCH -c 1
-#SBATCH --mem=100G
-#SBATCH -t 120:00:00
 
 module purge
 module load SAMtools/1.16-GCCcore-10.2.0
@@ -202,11 +195,7 @@ bgzip -c thy_genome_calls_pass_n17_decomposed_normalized_anno.hg19_multianno_edi
 tabix -p vcf thy_genome_calls_pass_n17_decomposed_normalized_anno.hg19_multianno_edit.vcf.gz
 
 # split
-[jc2545@ruddle2 split_test]$ awk '{print "source ~/.bashrc; module purge; module load GATK/4.2.6.1-GCCcore-10.2.0-Java-11; gatk SelectVariants -R /home/jc2545/ref_data/h_sapiens/1000genomes/2.5/b37/human_g1k_v37_decoy.fasta -V ../../v7/thy_genome_calls_pass_n17_decomposed_normalized_anno.hg19_multianno_edit.vcf.gz -L "$1" -O thy_genome_calls_pass_n17_decomposed_normalized_anno.hg19_multianno_edit_chr"$1".vcf.gz"}' < chrom.txt > split.sh
-[jc2545@ruddle2 split_test]$ dsq --job-file split.sh --mem-per-cpu 100g -c 1 -t 120:00:00 -J hj_split
-Batch script generated. To submit your jobs, run:
- sbatch dsq-split-2022-11-20.sh
-[jc2545@ruddle2 split_test]$ sbatch dsq-split-2022-11-20.sh
+awk '{print "source ~/.bashrc; module purge; module load GATK/4.2.6.1-GCCcore-10.2.0-Java-11; gatk SelectVariants -R /home/jc2545/ref_data/h_sapiens/1000genomes/2.5/b37/human_g1k_v37_decoy.fasta -V ../../v7/thy_genome_calls_pass_n17_decomposed_normalized_anno.hg19_multianno_edit.vcf.gz -L "$1" -O thy_genome_calls_pass_n17_decomposed_normalized_anno.hg19_multianno_edit_chr"$1".vcf.gz"}' < chrom.txt > split.sh
 ```
 
 
