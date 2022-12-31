@@ -216,3 +216,8 @@ python enhancer_promoter_burden_preprocess.splitlcr.rec.Nov212022_hj.py [input_f
 input_file : vcf file split by chromosome  
 lcr_ved : low complexity region file split by chromosome (*.bed)  
 MAF : minor allele frequency, this parameter is used to filter rare variants using diverse frequency.  
+
+
+## noncoding_genecounts
+this directory includes the scripts for making *.geneCounts.txt from coding to noncoding regions.  
+as the multi-genes are split into a single gene, each multi-gene is counted multiple times.  
